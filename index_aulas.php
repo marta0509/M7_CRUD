@@ -4,7 +4,7 @@ if (!isset($_SESSION['login']))
 {
 	$_SESSION['login']="incorreto";
 }
-if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
+if($_SESSION['login']== "correto" && isset($_SESSION['login']))
 {
 		$con=new mysqli("localhost","root","","projeto");
 		if($con->connect_errno!=0)
@@ -19,33 +19,33 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<html>
 			<head>
 				<meta charset="ISO-8859-1">
-				<title>Utilizadores</title>
-
+				<title>Aula</title>
 			</head>
 			<body style="background: #BFFAF7">
-				<h1 style="color: darkblue">Lista de Utilizadores</h1>
+				<h1 style="color: darkblue">Lista de Aulas de Condução</h1>
 				<br>
 				<?php
-					$stm=$con->prepare('select * from utilizadores');
+					$stm=$con->prepare('select * from aulaconducao');
 					$stm->execute();
 					$res=$stm->get_result();
 					while ($resultado=$res->fetch_assoc())
 					{
-						echo $resultado['nome'];
-						echo '<a href="edit_utilizadores.php?utilizador='.$resultado['id_utilizador'].'">Editar';
+						echo "Aula nº:  ";
+						echo $resultado['id'].' ';
+						echo '<a href="edit_aula.php?aulaconducao='.$resultado['id'].'">Editar';
 						echo '</a>'.' ';
-						echo '<a style="color:black" href="show_utilizadores.php?utilizador='.$resultado['id_utilizador'].'">Detalhes';
+						echo '<a style="color:black" href="show_aula.php?aulaconducao='.$resultado['id'].'">Detalhes';
 						echo '</a>'.' ';
-						echo '<a style="color:black" href="delete_utilizadores.php?utilizador='.$resultado['id_utilizador'].'">Apagar';
-						echo '</a>'.' ';
+						echo '<a style="color:black" href="delete_aula.php?aulaconducao='.$resultado['id'].'">Apagar';
+						echo '</a>'.' ';	
 						echo'<br>';
 					}
 					$stm->close();
 				?>
 				<br>
-				<a href="create_utilizadores.php">Criar um novo utilizador</a>
+				<a href="create_aula.php">Criar um novo registo</a>
+				
 			<br>
-
 			</body>
 			</html>
 		<?php
@@ -54,7 +54,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 }
 else
 {
-	echo 'Para entrar nesta página necessita efetuar <br><a href="login.php">login</a>';
+	echo 'Para entrar nesta página necessita efetuar o login <br><a href="login.php">login</a>';
 	header('refresh:1;url=login.php');
 }
 ?>
