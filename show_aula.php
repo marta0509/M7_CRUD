@@ -18,13 +18,13 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<?php
 			if ($_SERVER['REQUEST_METHOD']=="GET") 
 			{
-				if (!isset($_GET['escolaconducao']) || !is_numeric($_GET['escolaconducao'])) {
-					echo '<script>alert("Erro ao abrir Escola");</script>';
+				if (!isset($_GET['aulaconducao']) || !is_numeric($_GET['aulaconducao'])) {
+					echo '<script>alert("Erro ao abrir Aula");</script>';
 					echo "Aguarde um momento. A reecaminhar página";
-					header("refresh:1;url=index_escola.php");
+					header("refresh:1;url=index_aula.php");
 					exit();		
 				}	
-				$idEscola=$_GET['escolaconducao'];
+				$idAula=$_GET['aulaconducao'];
 				$con=new mysqli("localhost","root","","projeto");
 
 				if ($con->connect_errno!=0)
@@ -34,14 +34,14 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				}
 				else
 				{
-					$sql='select * from escolaconducao where id_escola=?';
+					$sql='select * from aulaconducao where id=?';
 					$stm =$con->prepare($sql);
 					if ($stm!=false)
 					{
-						$stm->bind_param('i',$idEscola);
+						$stm->bind_param('i',$idAula);
 						$stm->execute();
 						$res=$stm->get_result();
-						$escola=$res->fetch_assoc();
+						$aula=$res->fetch_assoc();
 						$stm->close();
 					}
 				else
@@ -51,7 +51,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					echo "<br>";
 					echo "Aguarde um momento. A reencaminhar página";
 					echo "<br>";
-					header("refresh:1; url=index_escola.php");
+					header("refresh:1; url=index_aula.php");
 				}
 			}
 		}
@@ -67,24 +67,27 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<title>Detalhes</title>
 		</head>
 		<body style="background: #BFFAF7">
-			<H1 style="color: darkblue">Detalhes da Escola</H1>
+			<H1 style="color: darkblue">Detalhes da Aula</H1>
 			<?php
-				if (isset($escola)) {
+				if (isset($aula)) {
 					echo "<br>";
-					echo "<b>Nome da Escola:</b>";
-					echo $escola['escola'];
+					echo "<b>Id da Escola:</b>";
+					echo $aula['id_escola'];
 					echo "<br>";
-					echo "<b>Descrição:</b>";
-					echo utf8_decode($escola['descricao']);
+					echo "<b>Data:</b>";
+					echo ($aula['data']);
+					echo "<br>";
+					echo "<b>Instrutor:</b>";
+					echo ($aula['instrutor']);
 					echo "<br>";
 				}
 				else
 				{
-					echo "<h2>Parece que a escola selecionada não existe.<br>Continue a sua seleção.</h2>";
+					echo "<h2>Parece que a aula selecionada não existe.<br>Continue a sua seleção.</h2>";
 				}
 			?>
 			<br>
-			<a class="btn btn-info" href="index_escola.php">Voltar</a>
+			<a class="btn btn-info" href="index_aulas.php">Voltar</a>
 
 			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
  			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

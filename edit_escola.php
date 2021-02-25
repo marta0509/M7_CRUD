@@ -44,6 +44,10 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<html>
 			<head>
 				<meta charset="utf-8">
+				 <link href="css/bootstrap.min.css" rel="stylesheet" >
+ 				 <link rel="stylesheet" href="css/jumbotrom.css">
+ 				 <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
+ 				 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
 				<title>Editar escola</title>
 
 			</head>
@@ -52,10 +56,15 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					<label><b>Nome da escola</b></label>
 					<input class="form-control" type="text" name="escola" required value="<?php echo $escolaconducao['escola'];?>"><br>
 					<label><b>Descrição</b></label>
-					<input class="form-control" type="text" name="descricao" value="<?php echo $escolaconducao['descricao'];?>"><br>
+					<input class="form-control" type="text" name="descricao" value="<?php echo utf8_decode($escolaconducao['descricao']);?>"><br>
 					<input class="form-control" type="hidden" name="id_escola" value="<?php echo $escolaconducao['id_escola'];?>"><br>
-					<input type="submit" name="enviar"><br>
+					<input class="btn btn-info" type="submit" name="enviar">
 				</form>
+
+
+				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ 				<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  				<script type="text/javascript" src="js/slick.min.js"></script>
 			</body>
 			</html>
 			<?php 
@@ -76,5 +85,5 @@ else
 	header('refresh:1;url=login.php');
 }
 ?>
-<br>
-<a href="processa_logout.php">Sair</a>
+
+<a class="btn btn-info" href="index_escola.php">Voltar</a>

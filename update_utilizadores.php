@@ -38,7 +38,10 @@
 		if (isset($_POST['data_nascimento'])) 
 		{
 			$data_nascimento=utf8_encode($_POST['data_nascimento']);
+			$newDate = date("d-m-Y", strtotime($data_nascimento));
+			
 		}
+
 		else
 		{
 			echo '<script>alert("É obrigatório o preenchimento da data de nascimento.");</script>';
@@ -61,12 +64,12 @@
 		}
 		else
 		{	
-			$sql="update utilizador set user_name=?,nome=?,email=?,data_nascimento=?,password=? where id_utilizador=?";
+			$sql="update utilizadores set user_name=?,nome=?,email=?,data_nascimento=?,password=? where id_utilizador=?";
 			$stm=$con->prepare($sql);
 
 			if($stm!=false)
 			{
-				$stm->bind_param("sssssi",$user_name,$nome,$email,$data_nascimento,$password,$id_escola);
+				$stm->bind_param("sssssi",$user_name,$nome,$email,$newDate,$password,$id_utilizador);
 				$stm->execute();
 				$stm->close();
 

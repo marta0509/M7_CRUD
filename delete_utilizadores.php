@@ -28,7 +28,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 						echo "<h1>Ocorreu um erro no acesso à base de dados.<br>".$con->connect_errnor."</h1>";
 						exit();
 					}	
-					$sql="delete from utilizador where id_utilizador=?";
+					$sql="delete from utilizadores where id_utilizador=?";
 					$stm=$con->prepare($sql);
 					if ($stm!=false)
 					{

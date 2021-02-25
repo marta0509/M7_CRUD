@@ -3,6 +3,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 {
 	$nome="";
 	$user_name="";
+	$email="";
+	$data_nascimento="";
 	$password="";
 
 	if (isset($_POST['nome']))
@@ -17,10 +19,34 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 	{
 		$user_name=utf8_decode($_POST['user_name']);
 	}
+	else
+	{
+		echo '<script>alert("É obrigatório o preenchimento do user.");</script>';
+	}
+	if (isset($_POST['email']))
+	{
+		$email=$_POST['email'];
+	}
+	else
+	{
+		echo '<script>alert("É obrigatório o preenchimento do email.");</script>';
+	}
+	if (isset($_POST['data_nascimento']))
+	{
+		$data_nascimento=$_POST['data_nascimento'];
+	}
+	else
+	{
+		echo '<script>alert("É obrigatório o preenchimento da data de nascimento.");</script>';
+	}
 	if(isset($_POST['password']))
 	{
 		$passsword=$_POST['password'];
 		$passencriptada=password_hash($password, PASSWORD_DEFAULT);
+	}
+	else
+	{
+		echo '<script>alert("É obrigatório o preenchimento da password.");</script>';
 	}
 	
 
@@ -34,11 +60,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 	else
 	{
-		$sql='insert into utilizadores(nome,user_name,password) values(?,?,?)';
+		$sql='insert into utilizadores(nome,user_name,email,data_nascimento,password) values(?,?,?,?,?)';
 		$stm=$con->prepare($sql);
 		if($stm!=false)
 		{
-			$stm->bind_param('sss',$nome,$user_name,$passencriptada);
+			$stm->bind_param('sssss',$nome,$user_name,$email,$data_nascimento,$passencriptada);
 			$stm->execute();
 			$stm->close();
 
@@ -67,10 +93,17 @@ else
 			<input class="form-control" type="text" name="nome" required=""><br>
 			<label><b>User Name</b></label>
 			<input class="form-control" type="text" name="user_name"><br>
+			<label><b>Email</b></label>
+			<input class="form-control" type="text" name="email"><br>
+			<label><b>Data de Nascimento</b></label>
+			<input class="form-control" type="date" name="data_nascimento"><br>
 			<label><b>Password</b></label>
-			<input class="form-control" type="text" name="password"><br>
-			<input type="submit" name="enviar"><br>
+			<input class="form-control" type="password" name="password"><br>
+			<input class="btn btn-info" type="submit" name="enviar"><br>
 		</form>
+
+		<br>
+		<a class="btn btn-info" href="index_utilizadores.php">Voltar</a>
 
 		<script src="JS/jquery-3.5.1.min.js"></script>
 		<script src="JS/bootstrap.min.js"></script>

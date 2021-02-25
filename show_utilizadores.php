@@ -60,6 +60,10 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 		<html>
 		<head>
 			<meta charset="utf-8">
+			 <link href="css/bootstrap.min.css" rel="stylesheet" >
+ 			 <link rel="stylesheet" href="css/jumbotrom.css">
+ 			 <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
+ 			 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
 			<title>Detalhes</title>
 		</head>
 		<body style="background: #BFFAF7">
@@ -89,7 +93,12 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				}
 			?>
 			<br>
-			<a href="index_utilizadores.php">Voltar</a>
+			<a class="btn btn-info" href="index_utilizadores.php">Voltar</a>
+
+
+			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ 			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  			<script type="text/javascript" src="js/slick.min.js"></script>
 		</body>
 		</html>	
 

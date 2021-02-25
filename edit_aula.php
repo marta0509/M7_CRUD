@@ -39,39 +39,80 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				$aulaconducao=$res->fetch_assoc();
 				$stm->close();
 			}
-			?>
+		}	
+
+		else
+		{	
+			$con = new mysqli("localhost","root","","projeto");
+
+			if ($con->connect_errno!=0)
+			{
+				echo "Ocorreu um erro no acesso à base de dados.<br>".$con->connect_error;
+				exit;
+			}
+
+			else
+			{
+				$stm=$con->prepare('select * from escolaconducao');
+				$stm->execute();
+				if($stm!=false)
+				{
+					$res=$stm->get_result();
+
+					$stm->close();
+				}
+			
+		?>
 			<!DOCTYPE html>
 			<html>
 			<head>
 				<meta charset="utf-8">
+				 <link href="css/bootstrap.min.css" rel="stylesheet" >
+  				 <link rel="stylesheet" href="css/jumbotrom.css">
+  				 <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
+  				 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
 				<title>Editar aula</title>
 
 			</head>
 			<body style="background: #BFFAF7">
 				<form action="update_aula.php" method="post">
 					<label><b>Id da escola</b></label>
-					<input class="form-control" type="text" name="id_escola" required="" value="<?php echo $aulaconducao['id_escola'];?>"><br>
+					<!--dropdown-->
+					<select name="id_escola" >
+						<?php
+						while ($resultado=$res->fetch_assoc())
+							{
+
+								echo '<option value="'.$resultado['id_escola'].'">'. $resultado['escola'].'</option>';
+							}
+						?>
+					</select>
+					<br>
 					<label><b>Data da aula</b></label>
 					<input class="form-control" type="date" name="data" required="" value="<?php echo $aulaconducao['data'];?>"><br>
 					<label><b>Instrutor</b></label>
 					<input class="form-control" type="text" name="instrutor" required="" value="<?php echo $aulaconducao['instrutor'];?>"><br>
 					<input class="form-control" type="hidden" name="id" value="<?php echo $aulaconducao['id'];?>"><br>
 
-					<input type="submit" name="enviar"><br>
+					<input class="btn btn-info" type="submit" name="enviar">
 				</form>
+
+
+				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ 				<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  				<script type="text/javascript" src="js/slick.min.js"></script>
 			</body>
 			</html>
 			<?php 
-				}
-				else
+			}//select
+		}//else select
+
+			else
 				{
 					echo('<h1>Houve um erro ao processar o seu pedido.<br> Dentro de segundos será reencaminhado!</h1>');
 					header("refresh:1;url=index_aulas.php");
-				}
-		}
-		
-			}//end if -if($con->connect_errno!=0)
-		
+				}	
+	}//if do GET
 }
 else
 {
@@ -79,5 +120,5 @@ else
 	header('refresh:1;url=login.php');
 }
 ?>
-<br>
-<a href="processa_logout.php">Sair</a>
+
+<a class="btn btn-info" href="index_aulas.php">Voltar</a>
