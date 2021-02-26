@@ -73,7 +73,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				if (isset($escola)) {
 					echo "<br>";
 					echo "<b>Nome da Escola:</b>";
-					echo $escola['escola'];
+					echo utf8_decode($escola['escola']);
 					echo "<br>";
 					echo "<b>Descrição:</b>";
 					echo $escola['descricao'];

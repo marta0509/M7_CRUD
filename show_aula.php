@@ -72,7 +72,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<?php
 				if (isset($aula)) {
 					echo "<br>";
-					echo "<b>Id da Escola:</b>";
+					echo "<b>Nome da Escola:</b>";
 					echo $aula['escola'];
 					echo "<br>";
 					echo "<b>Data:</b>";
