@@ -24,6 +24,9 @@
            <a class="btn btn-info" href="login.php">Login</a>
          </td>
          <td>
+           <a class="btn btn-info" href="create_utilizadores.php">Registra-se</a>
+         </td>
+         <td>
            <a class="btn btn-info" href="processa_logout.php">Sair</a>
          </td>
        </tr>
