@@ -24,33 +24,23 @@
            <a class="btn btn-info" href="login.php">Login</a>
          </td>
          <td>
-           <a class="btn btn-info" href="create_utilizadores.php">Registra-se</a>
+           <a class="btn btn-info" href="create_utilizadores.php">Cadastre-se</a>
          </td>
          <td>
            <a class="btn btn-info" href="processa_logout.php">Sair</a>
          </td>
        </tr>
     </table>
-
   <br><br>
-
-     <div style="text-align: center">
-       
+     <div style="text-align: center">   
        <p>Neste site você terá acesso a varias escolas de condução da região.</p>
        <br>
        <p>Poderá também marcar sua aula de condução.</p>
        <br>
        <p>Se deseja ter acesso a essas funcionalidades faça o seu login. Caso ainda não tenha o cadastro, faça-o agora!</p>
-
      </div>
-    
-
 	<br>
 	<br>
-	
-	
-
-
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="JS/jquery-3.5.1.min.js"></script>

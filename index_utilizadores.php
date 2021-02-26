@@ -25,7 +25,6 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
   				<link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
   				<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 				<title>Utilizadores</title>
-
 			</head>
 			<body style="background: #BFFAF7">
 				<h1 style="color: darkblue">Lista de Utilizadores</h1>
@@ -69,10 +68,6 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					?>
 				</table>
 				<br>
-				<a class="btn btn-info" href="create_utilizadores.php">Criar um novo utilizador</a>
-			<br>
-
-
 				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		 		<script src="JS/jquery-3.5.1.min.js"></script>
@@ -84,8 +79,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			</body>
 			</html>
 		<?php
-			}//end if -if($con->connect_errno!=0)
-		
+			}//end if -if($con->connect_errno!=0)		
 }
 else
 {
@@ -95,5 +89,4 @@ else
 ?>
 <br>
 <a class="btn btn-info" href="processa_logout.php">Sair</a>
-
 <a class="btn btn-info" href="index.php">Inicio</a>
