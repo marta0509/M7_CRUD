@@ -47,14 +47,16 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				 <link href="css/bootstrap.min.css" rel="stylesheet" >
   				 <link rel="stylesheet" href="css/jumbotrom.css">
   				 <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
-  				 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>				 
+  				 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>	
+  				 <link rel="stylesheet" type="text/css" href="CSS/estilos.css">		
+  				 <link rel="stylesheet" type="text/css" href="CSS/estilos.css">	 
 				<title>Editar utilizador</title>
 
 			</head>
 			<body style="background: #BFFAF7">
 				<form action="update_utilizadores.php" method="post">
 					<label><b>Nome:</b></label>
-					<input class="form-control" type="text" name="nome" required="" value="<?php echo $utilizador['nome'];?>"><br>
+					<input class="form-control" type="text" name="nome" required="" value="<?php echo utf8_decode($utilizador['nome']);?>"><br>
 					<label><b>User Name</b></label>
 					<input class="form-control" type="text" name="user_name" value="<?php echo $utilizador['user_name'];?>"><br>
 					<label><b>Email</b></label>
@@ -63,6 +65,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					<input class="form-control" type="date" name="data_nascimento" value="<?php echo $utilizador['data_nascimento'];?>"><br>
 					<label><b>Password</b></label>
 					<input class="form-control" type="password" name="password" value="<?php echo $utilizador['password'];?>"><br>
+					<input type="hidden" name="id_utilizador" value="<?php echo $utilizador['id_utilizador'];?>">
 					<input class="btn btn-info" type="submit" name="enviar"><br>
 				</form>
 				
@@ -71,8 +74,13 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 
 
 				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
- 				<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  				<script type="text/javascript" src="js/slick.min.js"></script>
+		 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		 		<script src="JS/jquery-3.5.1.min.js"></script>
+				<script src="JS/bootstrap.min.js"></script>
+				<script src="JS/all.min.js"></script>
+		  		<script type="text/javascript" src="JS/slick.min.js"></script>
+		  		<script type="text/javascript" src="JS/estilos.js"></script>
+		  		
 			</body>
 			</html>
 			<?php 

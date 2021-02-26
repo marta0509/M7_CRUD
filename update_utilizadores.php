@@ -37,8 +37,8 @@
 		}
 		if (isset($_POST['data_nascimento'])) 
 		{
-			$data_nascimento=utf8_encode($_POST['data_nascimento']);
-			$newDate = date("d-m-Y", strtotime($data_nascimento));
+			$data_nascimento=($_POST['data_nascimento']);
+			$newDate = date("Y-m-d", strtotime($data_nascimento));
 			
 		}
 
@@ -69,7 +69,7 @@
 
 			if($stm!=false)
 			{
-				$stm->bind_param("sssssi",$user_name,$nome,$email,$newDate,$password,$id_utilizador);
+				$stm->bind_param("sssssi",$user_name,$nome,$email,$data_nascimento,$password,$id_utilizador);
 				$stm->execute();
 				$stm->close();
 

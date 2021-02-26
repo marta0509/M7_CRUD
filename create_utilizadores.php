@@ -85,6 +85,7 @@ else
 		<link href="CSS/bootstrap.min.css" rel="stylesheet" >
 		<link rel="stylesheet" href="CSS/jumbotrom.css">
 		<link rel="stylesheet" href="CSS/all.min.css">
+		<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	</head>
 	<body style="background: #BFFAF7">
 		<h1 style="color: darkblue">Adicionar utilizador</h1>
@@ -105,10 +106,13 @@ else
 		<br>
 		<a class="btn btn-info" href="index_utilizadores.php">Voltar</a>
 
-		<script src="JS/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ 		<script src="JS/jquery-3.5.1.min.js"></script>
 		<script src="JS/bootstrap.min.js"></script>
 		<script src="JS/all.min.js"></script>
-	</body>
+  		<script type="text/javascript" src="JS/slick.min.js"></script>
+  		<script type="text/javascript" src="JS/estilos.js"></script>
 	</html>
 
 	<?php

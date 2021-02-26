@@ -18,14 +18,16 @@
 		}
 		if (isset($_POST['descricao'])) 
 		{
-			$descricao=utf8_encode($_POST['descricao']);
+			$descricao=($_POST['descricao']);
 		}
 		else
 		{
 			echo '<script>alert("É obrigatório o preenchimento da descrição.");</script>';
 		}
 
+
 		$con=new mysqli("localhost","root","","projeto");
+		$con->set_charset('utf8');
 
 		if ($con->connect_errno!=0) 
 		{

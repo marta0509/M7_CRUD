@@ -23,6 +23,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
   				<link rel="stylesheet" href="css/jumbotrom.css">
   				<link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
   				<link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
+  				<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 				<title>Utilizadores</title>
 
 			</head>
@@ -40,7 +41,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					<tr>
 						<td>
 							<?php
-								echo $resultado['nome'];
+								echo utf8_decode($resultado['nome']);
 							?>
 						</td>
 						<td>
@@ -72,9 +73,14 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 			<br>
 
 
-			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  			<script type="text/javascript" src="js/slick.min.js"></script>
+				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		 		<script src="JS/jquery-3.5.1.min.js"></script>
+				<script src="JS/bootstrap.min.js"></script>
+				<script src="JS/all.min.js"></script>
+		  		<script type="text/javascript" src="JS/slick.min.js"></script>
+		  		<script type="text/javascript" src="JS/estilos.js"></script>
+
 			</body>
 			</html>
 		<?php

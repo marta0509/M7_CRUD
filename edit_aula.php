@@ -28,6 +28,16 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				echo "<h1>Ocorreu um erro no acesso à base de dados.<br>".$con->connect_errnor."</h1>";
 				exit();
 			}	
+
+			$stm=$con->prepare('select * from escolaconducao');
+				$stm->execute();
+				if($stm!=false)
+				{
+					$resescola=$stm->get_result();
+
+					$stm->close();
+				} 
+
 			$sql="Select * from aulaconducao where id=?";
 			$stm=$con->prepare($sql);
 			if ($stm!=false)
@@ -39,7 +49,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				$aulaconducao=$res->fetch_assoc();
 				$stm->close();
 			}
-		}	
+			
 
 		else
 		{	
@@ -50,17 +60,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 				echo "Ocorreu um erro no acesso à base de dados.<br>".$con->connect_error;
 				exit;
 			}
-
-			else
-			{
-				$stm=$con->prepare('select * from escolaconducao');
-				$stm->execute();
-				if($stm!=false)
-				{
-					$res=$stm->get_result();
-
-					$stm->close();
-				}
+		}		
 			
 		?>
 			<!DOCTYPE html>
@@ -71,6 +71,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
   				 <link rel="stylesheet" href="css/jumbotrom.css">
   				 <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
   				 <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css"/>
+  				 <link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 				<title>Editar aula</title>
 
 			</head>
@@ -80,7 +81,7 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 					<!--dropdown-->
 					<select name="id_escola" >
 						<?php
-						while ($resultado=$res->fetch_assoc())
+						while ($resultado=$resescola->fetch_assoc())
 							{
 
 								echo '<option value="'.$resultado['id_escola'].'">'. $resultado['escola'].'</option>';
@@ -100,18 +101,22 @@ if($_SESSION['login']=="correto"&&isset($_SESSION['login']))
 
 				<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
  				<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  				<script type="text/javascript" src="js/slick.min.js"></script>
+ 				<script src="JS/jquery-3.5.1.min.js"></script>
+				<script src="JS/bootstrap.min.js"></script>
+				<script src="JS/all.min.js"></script>
+  				<script type="text/javascript" src="JS/slick.min.js"></script>
+  				<script type="text/javascript" src="JS/estilos.js"></script>
 			</body>
 			</html>
 			<?php 
 			}//select
-		}//else select
 
 			else
 				{
 					echo('<h1>Houve um erro ao processar o seu pedido.<br> Dentro de segundos será reencaminhado!</h1>');
 					header("refresh:1;url=index_aulas.php");
-				}	
+				}
+		}//if			
 	}//if do GET
 }
 else

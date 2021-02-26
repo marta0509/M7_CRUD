@@ -1,10 +1,15 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD']=='POST') 
 	{	
+		$aula="";
 		$escola="";
 		$data="";
 		$instrutor="";
 
+		if (isset($_POST['id']))
+		{
+			$aula=$_POST['id'];
+		}
 		if (isset($_POST['id_escola']))
 		{
 			$escola=$_POST['id_escola'];
@@ -44,7 +49,7 @@
 
 			if($stm!=false)
 			{
-				$stm->bind_param("sssi",$escola,$data,$instrutor,$id);
+				$stm->bind_param("sssi",$escola,$data,$instrutor,$aula);
 				$stm->execute();
 				$stm->close();
 
